@@ -6,8 +6,8 @@ See [custom_model.py](custom_model.py) and [train.py](train.py)  for details.
 ```python
 #
 # Define your model via subclassing. ---|
-#                                      |
-#                                     \/
+#                                       |
+#                                      \/
 class CustomClassifier(GradientAccumulatorModel):
 
     def __init__(self, n_classes, num_grad_accum=1, **kargs):
