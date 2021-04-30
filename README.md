@@ -4,16 +4,20 @@
 See [custom_model.py](custom_model.py) and [train.py](train.py)  for details.  
 
 ```python
+#
+# Define your model via subclassing. ---|
+#                                      |
+#                                     \/
 class CustomClassifier(GradientAccumulatorModel):
 
     def __init__(self, n_classes, num_grad_accum=1, **kargs):
         #
         # How many accumulate do you want?
-        # Pass that accumulation counts to GradientAccumulatorModel class
+        # Pass that accumulation counts to GradientAccumulatorModel class.
         #
         super(CustomClassifier, self).__init__(num_accum=num_grad_accum, **kargs)
         #
-        # Implements your neural networks
+        # Implements your neural networks.
         #
 
     def compile(self, **kargs):
@@ -24,14 +28,14 @@ class CustomClassifier(GradientAccumulatorModel):
 
     def call(self, inputs, training=False):
         #
-        # Implements your Forward pass
+        # Implements your Forward pass.
         #
 
     def train_step(self, data):
         x, y_true = data
         with tf.GradientTape() as tape:
             #
-            # Implements your custom training loop
+            # Implements your custom training loop.
             #
             total_loss = tf.math.reduce_mean(your_loss)
         grads = tape.gradient(total_loss, self.trainable_variables)
