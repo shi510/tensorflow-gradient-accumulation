@@ -39,15 +39,6 @@ class CustomClasifier(GradientAccumulatorModel):
             [Dense(1024), BatchNormalization(), ReLU()] + 
             [Dense(self.num_classes)])
 
-        # self.seq = tf.keras.Sequential(
-        #     __conv_bn_act(16) +
-        #     [MaxPool2D((2, 2), (2, 2))] +
-        #     __conv_bn_act(32) +
-        #     [MaxPool2D((2, 2), (2, 2))] +
-        #     [Flatten(), Dropout(0.2)] +
-        #     [Dense(32), BatchNormalization(), ReLU()] + 
-        #     [Dense(self.num_classes)])
-
     def compile(self, **kargs):
         super(CustomClasifier, self).compile(**kargs)
 
