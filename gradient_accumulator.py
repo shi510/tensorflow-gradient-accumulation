@@ -5,7 +5,7 @@ class GradientAccumulatorModel(tf.keras.Model):
     def __init__(self, num_accum, **kargs):
         super(GradientAccumulatorModel, self).__init__(**kargs)
         self.num_accum = tf.constant(num_accum, dtype=tf.int32)
-        self.step_count = tf.Variable(1, dtype=tf.int32, trainable=False)
+        self.step_count = tf.Variable(0, dtype=tf.int32, trainable=False)
 
     def compile(self, **kargs):
         super(GradientAccumulatorModel, self).compile(**kargs)
@@ -33,6 +33,6 @@ class GradientAccumulatorModel(tf.keras.Model):
 
     def __apply_grads_and_init(self):
         self.optimizer.apply_gradients(zip(self.grad_accum, self.trainable_variables))
-        self.step_count.assign(1)
+        self.step_count.assign(0)
         for i in range(len(self.grad_accum)):
             self.grad_accum[i].assign(tf.zeros_like(self.trainable_variables[i], dtype=tf.float32))

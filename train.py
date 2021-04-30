@@ -78,8 +78,7 @@ if __name__ == '__main__':
     log_dir = 'logs/grad_accum_{}'.format(args.grad_accum)
     train_ds, test_ds = get_dataset(args.batch)
     model = get_custom_model(args.batch, num_classes, args.grad_accum)
-    model.compile(optimizer=tf.keras.optimizers.Adam(lr=1e-3),
-        loss=tf.nn.sparse_softmax_cross_entropy_with_logits)
+    model.compile(optimizer=tf.keras.optimizers.Adam(lr=1e-3))
     model.summary()
     model.fit(train_ds, validation_data=test_ds, epochs=5 * args.grad_accum, verbose=1,
         callbacks=[LogCallback(args.grad_accum, log_dir=log_dir)],

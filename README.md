@@ -10,7 +10,7 @@ See [custom_model.py](custom_model.py) and [train.py](train.py)  for details.
 #                                      \/
 class CustomClassifier(GradientAccumulatorModel):
 
-    def __init__(self, n_classes, num_grad_accum=1, **kargs):
+    def __init__(self, num_grad_accum=1, **kargs):
         #
         # How many accumulate do you want?
         # Pass that accumulation counts to GradientAccumulatorModel class.
@@ -53,7 +53,7 @@ python train.py --batch 16 --grad_accum 8
 ```
 
 ## Results
-Batch size is used 16.  
+Batch size is 16.  
 
 ![results.jpg](results.jpg)
 
