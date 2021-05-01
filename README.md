@@ -1,5 +1,3 @@
-# tensorflow-gradient-accumulator
-
 ## How To Use
 See [custom_model.py](custom_model.py) and [train.py](train.py)  for details.  
 
